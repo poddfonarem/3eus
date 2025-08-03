@@ -6,7 +6,7 @@ Uses Composer PSR-4 autoloading. Namespaces match directories.
 
 ## Helpers
 
-Located in `core/helpers.php`, add global utilities like session or URL helpers.
+Located in `src/Helpers/function.php`, add global utilities like session or URL helpers.
 
 ## Error Handling
 
