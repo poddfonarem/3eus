@@ -1,5 +1,6 @@
 {
     "name": "poddfonarem/starter",
+    "description": "A lightweight PHP MVC starter boilerplate project",
     "type": "project",
     "license": "MIT",
     "autoload": {
