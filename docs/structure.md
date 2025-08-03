@@ -1,12 +1,12 @@
 # Project Structure
 
 ```
-├── app               # Controllers, models
-├── config            # Configuration files (app, db, routes, session)
-├── core              # Core MVC: Router, Controller, View, Model
+├── bootstrap         # Application bootstrap
+├── config            # Configuration files (app, database, routes, session)
 ├── public            # Public directory (index.php, assets)
 ├── resources/views   # Templates: layouts, pages, errors
+├── src               # Controllers, models, core, helpers, services
 ├── storage           # Logs, backups
-├── bootstrap         # Application bootstrap
 ├── .env              # Environment settings
+├── composer.json     # Core configuration file
 ```
