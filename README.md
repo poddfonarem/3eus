@@ -11,7 +11,6 @@ git clone https://github.com/poddfonarem/php-mvc-starter.git my-project
 cd my-project
 composer install
 cp .env.example .env
-php bootstrap/app.php
 ```
 
 ## Running
@@ -24,8 +23,9 @@ php -S localhost:8000 -t public
 
 You must set up your database separately before running the application.
 
-1. Create a database (e.g., `phpmvc`).
-2. Update your `.env` file with the correct DB credentials:
+1. Install and start MYSQL.
+2. Create a database (e.g., `phpmvc`).
+3. Update your `.env` file with the correct DB credentials:
 
 
 ## Documentation
