@@ -4,8 +4,22 @@ Routes are defined in `config/routes.php`. Example:
 
 ```php
 return [
-    '/' => ['PagesController', 'index'],
-    '/about' => ['PagesController', 'about'],
+    'routes' => [
+        '' => [PageController::class, 'home'],
+        '403' => [PageController::class, 'show403'],
+
+        // handlers
+        // ...
+    ],
+
+    'noBuilderPages' => [
+
+        // min layout pages
+        'pagesWithLayout' => [],
+
+        // no layout pages
+        'pagesWithoutLayout' => [],
+    ]
 ];
 ```
 
