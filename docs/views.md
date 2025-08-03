@@ -6,8 +6,22 @@ Templates are located in `resources/views`. Structure:
 - `pages/` — content pages
 - `errors/` — error pages
 
-Rendering from a controller:
+Route to controller (config/routes.php):
 
 ```php
-$this->render('pages/home', ['title' => 'Home']);
+'' => [PageController::class, 'home'],
+```
+
+Rendering from a controller (src/Controllers/PageController):
+
+```php
+    public function home(): array
+    {
+        return [
+            'view' => 'pages/home',
+            'data' => [
+                'h1_content' => 'MVC Starter by poddfonarem',
+            ]
+        ];
+    }
 ```
