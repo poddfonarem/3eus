@@ -5,7 +5,6 @@ namespace src\Controllers;
 
 use JetBrains\PhpStorm\NoReturn;
 use src\Core\BaseController;
-use src\Core\View;
 
 class PageController extends BaseController
 {
@@ -23,7 +22,7 @@ class PageController extends BaseController
     public function show404(): void
     {
         http_response_code(404);
-        echo View::render('errors/404', ['h1_content' => 'Сторінка не знайдена']);
+        echo $this->abort();
         exit;
     }
 
@@ -31,7 +30,7 @@ class PageController extends BaseController
     public function show403(): void
     {
         http_response_code(403);
-        echo View::render('errors/403', ['h1_content' => 'Доступ заборонено']);
+        echo $this->denied();
         exit;
     }
 }
