@@ -28,7 +28,21 @@ abstract class BaseController
     {
         http_response_code($code);
         if ($code === 404) {
-            return View::render('errors/404');
+            return View::render('errors/404',['h1_content' => 'Сторінка не знайдена']);
+        }
+
+        if ($message && (!isset($_ENV['APP_DEBUG']) || $_ENV['APP_DEBUG'] !== 'true')) {
+            $message = '';
+        }
+
+        return $message ?: 'Error';
+    }
+
+    protected function denied(int $code = 403, string $message = ''): bool|string
+    {
+        http_response_code($code);
+        if ($code === 403) {
+            return View::render('errors/403', ['h1_content' => 'Доступ заборонено']);
         }
 
         if ($message && (!isset($_ENV['APP_DEBUG']) || $_ENV['APP_DEBUG'] !== 'true')) {
