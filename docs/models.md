@@ -1,18 +1,11 @@
 # Models
 
-The base model class uses PDO.
+Models are located in `src/Models` and extend `src\Core\BaseModel`.
+The BaseModel class uses PDO.
 
 ```php
 class Auth
 {
-    private static ?self $instance = null;
-    private PDO $conn;
-
-    public function __construct(PDO $conn)
-    {
-        $this->conn = $conn;
-    }
-
     public function login($nickname, $password): array
     {
         if (!$nickname || !$password) {
