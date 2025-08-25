@@ -1,0 +1,24 @@
+{
+    "name": "poddfonarem/3eus",
+    "description": "A lightweight 3eus starter boilerplate project",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "files": [
+            "app/Helpers/function.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "poddfonarem"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "ext-pdo": "*",
+        "vlucas/phpdotenv": "^5.6@dev"
+    }
+}
