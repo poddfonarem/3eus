@@ -1,6 +1,0 @@
-User-agent: *
-
-User-agent: GoogleBot
-Allow: /
-Host: MVC Starter
-Sitemap: https://github.com/poddfonarem/php-mvc-starter/sitemap.xml
