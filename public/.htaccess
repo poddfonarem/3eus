@@ -1,0 +1,75 @@
+RewriteEngine on
+Options All -Indexes
+
+# HTTPS redirect
+#RewriteCond %{HTTPS} !=on
+#RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} (.+)/$
+RewriteRule ^ %1 [L,R=301]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?route=$1 [L,QSA]
+
+ErrorDocument 403 /403
+ErrorDocument 404 /404
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType application/font-woff2 "access plus 1 year"
+</IfModule>
+
+<IfModule mod_headers.c>
+
+    Header unset Pragma
+    Header set X-Content-Type-Options "nosniff"
+    Header unset X-Frame-Options
+    Header set Content-Security-Policy "frame-ancestors 'self'"
+    Header always unset X-XSS-Protection
+    Header always set Referrer-Policy "no-referrer-when-downgrade"
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+
+    <FilesMatch "\.(html|php)$">
+        Header set Cache-Control "no-store, no-cache, must-revalidate"
+    </FilesMatch>
+
+    <FilesMatch "\.(woff2?|ttf|svg|woff|otf)$">
+        Header set Cache-Control "max-age=31536000, public, immutable"
+        Header set Access-Control-Allow-Origin "*"
+    </FilesMatch>
+
+    <FilesMatch "\.(jpg|jpeg|png|gif|webp)$">
+        Header set Cache-Control "max-age=31536000, public, immutable"
+    </FilesMatch>
+
+    <FilesMatch "\.(css)$">
+        Header set Cache-Control "max-age=31536000, public, immutable"
+        Header set Content-Type "text/css; charset=utf-8"
+    </FilesMatch>
+
+    <FilesMatch "\.(js)$">
+        Header set Cache-Control "max-age=31536000, public, immutable"
+        Header set Content-Type "application/javascript; charset=utf-8"
+    </FilesMatch>
+
+    <FilesMatch "favicon\.ico$">
+        Header set Cache-Control "max-age=31536000, public, immutable"
+    </FilesMatch>
+
+    <FilesMatch "(\.env|config\.php|\.htaccess|composer\.json|composer\.lock)">
+        Require all denied
+    </FilesMatch>
+
+</IfModule>
+
+AddDefaultCharset UTF-8
