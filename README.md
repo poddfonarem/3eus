@@ -1,5 +1,5 @@
 # 3eus Starter
-![Main Banner](docs/screenshoots/v2.0.jpg)
+![Main Banner](docs/screenshoots/v2.1.jpg)
 
 ## Description
 
